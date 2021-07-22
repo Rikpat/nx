@@ -182,6 +182,7 @@ export function newProject({ name = uniq('proj') } = {}): string {
         `@nrwl/react`,
         `@nrwl/storybook`,
         `@nrwl/web`,
+        `@nrwl/react-native`,
       ];
       packageInstall(packages.join(` `), projScope);
 
