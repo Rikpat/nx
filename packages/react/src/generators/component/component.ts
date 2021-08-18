@@ -178,7 +178,8 @@ async function normalizeOptions(
 }
 
 async function getDirectory(host: Tree, options: Schema) {
-  const fileName = names(options.name).fileName;
+  const { fileName, className } = names(options.name);
+  const dirName = options.pascalCaseFiles ? className : fileName;
   const workspace = getProjects(host);
   let baseDir: string;
   if (options.directory) {
@@ -189,7 +190,7 @@ async function getDirectory(host: Tree, options: Schema) {
         ? 'app'
         : 'lib';
   }
-  return options.flat ? baseDir : joinPathFragments(baseDir, fileName);
+  return options.flat ? baseDir : joinPathFragments(baseDir, dirName);
 }
 
 function assertValidOptions(options: Schema) {
